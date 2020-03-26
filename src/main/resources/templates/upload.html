@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>基于Opencv的车牌识别系统</title>
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="plugins/themes/bootstrap/easyui.css"
+    />
+
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="plugins/themes/icon.css"
+    />
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="plugins/themes/color.css"
+    />
+    <script type="text/javascript" src="plugins/jquery.min.js"></script>
+    <script type="text/javascript" src="plugins/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="plugins/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+<div class="easyui-layout" style="width:100%;height:900px;">
+    <div data-options="region:'north'" style="height:60px;">
+        <h2>《基于OpenCV的车牌识别系统》demo——郭一鸣</h2>
+    </div>
+    <!--<div data-options="region:'south',split:true" style="height:50px;"></div>-->
+    <div data-options="region:'west',split:true" title="导航栏" style="width:200px;">
+        <div class="easyui-accordion" data-options="fit:true,border:false">
+            <div title="图像上传演示" data-options="selected:true" style="padding:10px;">
+                <p><a href="/upload" class="easyui-linkbutton" data-options="iconCls:'icon-more'">上传识别</a></p>
+                <p><a href="/show" class="easyui-linkbutton" data-options="iconCls:'icon-more'">识别过程展示</a></p>
+            </div>
+            <div title="车辆信息记录"  style="padding:10px;">
+                <p><a href="/infos" class="easyui-linkbutton" data-options="iconCls:'icon-more'">查看数据</a></p>
+                <p><a href="/test_result" class="easyui-linkbutton" data-options="iconCls:'icon-more'">测试数据</a></p>
+            </div>
+        </div>
+    </div>
+    <div data-options="region:'center',title:'上传面板',iconCls:'icon-ok'">
+        <a href="#button" class="easyui-linkbutton" onclick="uploadidalogonline(); " data-options="iconCls:'icon-add'">上传图片</a>
+
+    </div>
+</div>
+
+<div id="uploadonlineinfo" class="easyui-window" style="width:380px;padding:10px 40px" closed="true">
+    <form id="fam" method="post" enctype="multipart/form-data">
+        <table border="0" style="margin-top:4px;" width="100%" align="center">
+            <tr>
+                <td>
+                    <input class="easyui-filebox" name="onlinefilename" data-options="prompt:'文件上传'" style="width:100%"></input>
+                </td>
+
+            </tr>
+        </table>
+    </form>
+
+    <div data-options="region:'south',border:false" style="text-align:center;padding:5px 0 0;">
+        <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="uploadonline();" style="width:80px">上传</a>
+    </div>
+</div>
+</body>
+
+</html>

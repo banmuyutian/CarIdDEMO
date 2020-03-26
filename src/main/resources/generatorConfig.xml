@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <classPathEntry
+            location="C:\Package\apache-maven-3.5.4\MavenRepository\mysql\mysql-connector-java\5.1.25\mysql-connector-java-5.1.25.jar"/>
+    <context id="context1">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection connectionURL="jdbc:mysql://47.102.211.10:3306/Cars"
+                        driverClass="com.mysql.jdbc.Driver" password="1598742a" userId="anson"/>
+
+        <javaModelGenerator targetPackage="guo.cars.domain"
+                            targetProject=".\src\main\java"/>
+
+        <sqlMapGenerator targetPackage="mappers"
+                         targetProject=".\src\main\resources"/>
+
+        <javaClientGenerator targetPackage="guo.cars.dao"
+                             targetProject=".\src\main\java" type="XMLMAPPER"/>
+
+        <table tableName="test_result" domainObjectName="TestResult" enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+    </context>
+</generatorConfiguration>

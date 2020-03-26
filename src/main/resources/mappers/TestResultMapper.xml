@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="guo.cars.dao.TestResultMapper" >
+  <resultMap id="BaseResultMap" type="guo.cars.domain.TestResult" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="sum" property="sum" jdbcType="INTEGER" />
+    <result column="sum_time" property="sumTime" jdbcType="BIGINT" />
+    <result column="longest_time" property="longestTime" jdbcType="BIGINT" />
+    <result column="average_time" property="averageTime" jdbcType="BIGINT" />
+    <result column="correct_rate" property="correctRate" jdbcType="VARCHAR" />
+    <result column="img" property="img" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, number, sum, sum_time, longest_time, average_time, correct_rate, img
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from test_result
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from test_result
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="guo.cars.domain.TestResult" >
+    insert into test_result (id, number, sum, 
+      sum_time, longest_time, average_time, 
+      correct_rate, img)
+    values (#{id,jdbcType=INTEGER}, #{number,jdbcType=VARCHAR}, #{sum,jdbcType=INTEGER}, 
+      #{sumTime,jdbcType=BIGINT}, #{longestTime,jdbcType=BIGINT}, #{averageTime,jdbcType=BIGINT}, 
+      #{correctRate,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="guo.cars.domain.TestResult" >
+    insert into test_result
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="sum != null" >
+        sum,
+      </if>
+      <if test="sumTime != null" >
+        sum_time,
+      </if>
+      <if test="longestTime != null" >
+        longest_time,
+      </if>
+      <if test="averageTime != null" >
+        average_time,
+      </if>
+      <if test="correctRate != null" >
+        correct_rate,
+      </if>
+      <if test="img != null" >
+        img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="sum != null" >
+        #{sum,jdbcType=INTEGER},
+      </if>
+      <if test="sumTime != null" >
+        #{sumTime,jdbcType=BIGINT},
+      </if>
+      <if test="longestTime != null" >
+        #{longestTime,jdbcType=BIGINT},
+      </if>
+      <if test="averageTime != null" >
+        #{averageTime,jdbcType=BIGINT},
+      </if>
+      <if test="correctRate != null" >
+        #{correctRate,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null" >
+        #{img,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="guo.cars.domain.TestResult" >
+    update test_result
+    <set >
+      <if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="sum != null" >
+        sum = #{sum,jdbcType=INTEGER},
+      </if>
+      <if test="sumTime != null" >
+        sum_time = #{sumTime,jdbcType=BIGINT},
+      </if>
+      <if test="longestTime != null" >
+        longest_time = #{longestTime,jdbcType=BIGINT},
+      </if>
+      <if test="averageTime != null" >
+        average_time = #{averageTime,jdbcType=BIGINT},
+      </if>
+      <if test="correctRate != null" >
+        correct_rate = #{correctRate,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null" >
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="guo.cars.domain.TestResult" >
+    update test_result
+    set number = #{number,jdbcType=VARCHAR},
+      sum = #{sum,jdbcType=INTEGER},
+      sum_time = #{sumTime,jdbcType=BIGINT},
+      longest_time = #{longestTime,jdbcType=BIGINT},
+      average_time = #{averageTime,jdbcType=BIGINT},
+      correct_rate = #{correctRate,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from test_result
+  </select>
+</mapper>
